@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="stylee.css">
+</head>
+<body>
+        <div class="wrap">
+                <h1 class="h1">live search</h1>
+                <input type="text" id="input" class="input">
+            </div>
+            <ol class="ul">
+                <li>яблоко</li>
+                <li>банан</li>
+                <li>апельсин</li>
+                <li>груша</li>
+                <li>виноград</li>
+                <li>лимон</li>
+                <li>арбуз</li>
+                <li>дыня</li>
+            </ol>
+</body>
+<script>
+window.onload = () => {
+    let input = document.querySelector('input');
+    input.oninput = function() {
+        let value = this.value.trim();
+        let list = document.querySelectorAll('.ul li');
+
+        if(value != '') {
+            list.forEach(elem => {
+                if(elem.innerText.search(value) == -1){
+                    elem.classList.add('hide');
+                }
+            });
+        } else {
+            list.forEach(elem => {
+                elem.classList.remove('hide');
+            });
+        }
+
+        console.log(this.value);
+    };
+};
+</script>
+</html>
